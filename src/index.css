@@ -1,0 +1,140 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: 'Syne', sans-serif;
+  --font-serif: 'Cinzel', serif;
+  --font-mono: 'Space Grotesk', monospace;
+  --font-sans: 'Inter', 'Outfit', sans-serif;
+
+  --color-gold-200: #FFF3C4;
+  --color-gold-300: #F6E27A;
+  --color-gold-400: #E5C158;
+  --color-gold-500: #D4AF37;
+  --color-gold-600: #A37F14;
+  --color-gold-700: #745706;
+
+  --color-obsidian-950: #040406;
+  --color-obsidian-900: #09090D;
+  --color-obsidian-850: #0E0E14;
+  --color-obsidian-800: #14141D;
+  --color-obsidian-700: #1F1F2C;
+  --color-obsidian-600: #2C2C3D;
+}
+
+@layer base {
+  * {
+    border-color: rgba(255, 255, 255, 0.08);
+  }
+
+  body {
+    background-color: #040406;
+    color: #EDEDED;
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+
+  /* Custom luxury scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #09090D;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #2A2A38;
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #D4AF37;
+  }
+}
+
+/* Luxury UI Utilities */
+.glass-panel {
+  background: rgba(14, 14, 20, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.glass-panel-gold {
+  background: rgba(20, 18, 12, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  box-shadow: 0 0 30px -10px rgba(212, 175, 55, 0.15);
+}
+
+.text-gold-gradient {
+  background: linear-gradient(135deg, #FFF5D0 0%, #D4AF37 50%, #9B781E 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-silver-gradient {
+  background: linear-gradient(135deg, #FFFFFF 0%, #B8B8C2 50%, #70707D 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.border-gold-subtle {
+  border-color: rgba(212, 175, 55, 0.2);
+}
+
+.gold-glow {
+  box-shadow: 0 0 25px -5px rgba(212, 175, 55, 0.35);
+}
+
+.gold-glow-lg {
+  box-shadow: 0 0 50px -10px rgba(212, 175, 55, 0.45);
+}
+
+.subtle-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+}
+
+.carbon-pattern {
+  background: 
+    radial-gradient(black 15%, transparent 16%) 0 0,
+    radial-gradient(black 15%, transparent 16%) 8px 8px,
+    radial-gradient(rgba(255,255,255,.05) 15%, transparent 20%) 0 1px,
+    radial-gradient(rgba(255,255,255,.05) 15%, transparent 20%) 8px 9px;
+  background-color: #0b0b0e;
+  background-size: 16px 16px;
+}
+
+/* Pulse animation for HUD / Telemetry */
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.03); }
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 3s ease-in-out infinite;
+}
+
+/* Metallic Sheen Keyframe */
+@keyframes sheen {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
+
+.sheen-effect {
+  position: relative;
+  overflow: hidden;
+}
+.sheen-effect::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+  transform: skewX(-20deg) translateX(-150%);
+  animation: sheen 6s infinite ease-in-out;
+}
